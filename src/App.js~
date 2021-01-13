@@ -58,7 +58,8 @@ class App extends Component {
       if (callResult === true) {
         this.setState({ characters: [...this.state.characters, character] });
       }
-  });
+    });
+  }
 }
 
 export default App
