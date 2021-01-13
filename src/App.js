@@ -1,10 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
-import Table from './Table'
+import Table from './Table';
 import Form from './Form';
 
-componentDidMount() {
-   axios.get('http://localhost:5000/users')
+class App extends Component {
+  state = {
+     characters: [],
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:5000/users')
     .then(res => {
       const characters = res.data.users_list;
       this.setState({ characters });
@@ -13,12 +18,8 @@ componentDidMount() {
       //Not handling the error. Just logging into the console.
       console.log(error);
     });
-}
-
-class App extends Component {
-  state = {
-     characters: [],
   }
+
   render() {
     const { characters } = this.state
 
