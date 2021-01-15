@@ -24,7 +24,7 @@ class App extends Component {
     return axios.post('http://localhost:5000/users', character)
       .then(function (response) {
         console.log(response);
-        return (response.status === 201);
+        return (response);
       })
       .catch(function (error) {
         console.log(error);
@@ -71,8 +71,8 @@ class App extends Component {
   }
   handleSubmit = character => {
     this.makePostCall(character).then( callResult => {
-      if (callResult === true) {
-        this.setState({ characters: [...this.state.characters, character] });
+      if (callResult.status === 201) {
+        this.setState({ characters: [...this.state.characters, callResult.data] });
       }
     });
   }
